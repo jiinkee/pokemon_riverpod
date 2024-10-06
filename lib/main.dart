@@ -25,8 +25,12 @@ class MyApp extends StatelessWidget {
       title: 'Pokemon',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        scaffoldBackgroundColor: Colors.lightGreen[50],
         useMaterial3: true,
         textTheme: GoogleFonts.quattrocentoSansTextTheme(),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.lightGreen[200],
+        )
       ),
       home: const HomeScreen(),
     );
