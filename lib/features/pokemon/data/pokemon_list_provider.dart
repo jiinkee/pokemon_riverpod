@@ -17,22 +17,27 @@ class PokemonListNotifier
   }
 
   Future<PaginationData<List<PokemonListData>>> getPokemons() async {
-    final response = await _api.get(ApiRoutes.getPokemons());
-    List<PokemonListData> pokemons =
-        ((response.data?['results'] ?? []) as List<dynamic>)
-            .map((e) => PokemonListData.fromJson(e))
-            .toList();
-    PaginationData<List<PokemonListData>> paginatedPokemons =
-        PaginationData.fromApiResponse(
-      response.data,
-      pokemons,
-    );
+    final response = await _api.get(endpoint: ApiRoutes.getPokemons());
 
-    return paginatedPokemons;
+    if (response != null && response.data != null) {
+      List<PokemonListData> pokemons =
+          ((response.data?['results'] ?? []) as List<dynamic>)
+              .map((e) => PokemonListData.fromJson(e))
+              .toList();
+      PaginationData<List<PokemonListData>> paginatedPokemons =
+          PaginationData.fromApiResponse(
+        response.data,
+        pokemons,
+      );
+      return paginatedPokemons;
+    }
+
+    return PaginationData();
   }
 }
 
 // AsyncNotifierProvider will provide AsyncValue
-final pokemonListProvider = AsyncNotifierProvider<PokemonListNotifier, PaginationData<List<PokemonListData>>>(() {
+final pokemonListProvider = AsyncNotifierProvider<PokemonListNotifier,
+    PaginationData<List<PokemonListData>>>(() {
   return PokemonListNotifier();
 });
