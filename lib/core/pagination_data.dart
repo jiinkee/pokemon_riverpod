@@ -20,4 +20,17 @@ class PaginationData<T> {
       results: data,
     );
   }
+
+  PaginationData<T> copyWith({
+    num? count,
+    String? previous,
+    String? next,
+     T? results}) {
+    return PaginationData(
+      count: count ?? this.count,
+      previous: previous ?? this.previous,
+      next: next ?? this.next,
+      results: results ?? this.results,
+    );
+  }
 }
