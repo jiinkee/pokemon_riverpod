@@ -57,7 +57,7 @@ class _PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
           itemCount: data.results?.length ?? 0,
           itemBuilder: (ctx, index) {
             final pokemonListItem = data.results?[index];
-            return PokemonListItem(url: pokemonListItem?.url ?? '');
+            return PokemonListItem(name: pokemonListItem?.name ?? '');
           },
         );
       },

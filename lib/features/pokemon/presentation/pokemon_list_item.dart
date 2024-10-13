@@ -4,16 +4,16 @@ import 'package:pokemon_riverpod/features/pokemon/data/pokemon_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class PokemonListItem extends ConsumerWidget {
-  final String url;
+  final String name;
 
-  const PokemonListItem({super.key, required this.url});
+  const PokemonListItem({super.key, required this.name});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pokemonState = ref.watch(pokemonProvider(url));
+    final pokemonState = ref.watch(pokemonProvider(name));
 
     return Skeletonizer(
-      key: ValueKey(url),
+      key: ValueKey(name),
       enabled: pokemonState.isLoading,
       child: ListTile(
         leading: SizedBox(

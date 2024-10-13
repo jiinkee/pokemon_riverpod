@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Sprite {
   final String backDefalt;
@@ -32,4 +34,19 @@ class Sprite {
       frontShinyFemale: source['front_shiny_female']?.toString() ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'back_default': backDefalt,
+      'back_female': backFemale,
+      'back_shiny': backShiny,
+      'back_shiny_female': backShinyFemale,
+      'front_default': frontDefault,
+      'front_female': frontFemale,
+      'front_shiny': frontShiny,
+      'front_shiny_female': frontShinyFemale,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }
