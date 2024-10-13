@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokemon_riverpod/core/api.dart';
+import 'package:pokemon_riverpod/core/network/api.dart';
 import 'package:pokemon_riverpod/core/locator.dart';
 import 'package:pokemon_riverpod/features/pokemon/domain/pokemon.dart';
 

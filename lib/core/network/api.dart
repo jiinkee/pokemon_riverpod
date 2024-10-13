@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokemon_riverpod/core/api_routes.dart';
+import 'package:pokemon_riverpod/core/network/api_routes.dart';
 
 class Api {
   final Dio _dio = Dio(BaseOptions(
@@ -20,5 +20,10 @@ class Api {
       return await _simpleDio.get(completeUrl);
     }
     return null;
+  }
+
+  void close() {
+    _dio.close();
+    _simpleDio.close();
   }
 }

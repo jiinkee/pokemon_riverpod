@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokemon_riverpod/core/async_value_ui.dart';
+import 'package:pokemon_riverpod/core/extensions/async_value_ui.dart';
 import 'package:pokemon_riverpod/features/pokemon/data/pokemon_list_provider.dart';
 import 'package:pokemon_riverpod/features/pokemon/presentation/pokemon_list_item.dart';
 
@@ -31,9 +31,14 @@ class _PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
   }
 
   void _scrollListener() {
+    final pokemonListState = ref.read(pokemonListProvider);
+    final pokemonListNotifer = ref.read(pokemonListProvider.notifier);
     // reach the end of list, auto load the next page
-    if (_scroll.offset > _scroll.position.maxScrollExtent * 0.8 && !_scroll.position.outOfRange) {
-      ref.read(pokemonListProvider.notifier).getPokemons();
+    if (!pokemonListState.isLoading &&
+        _scroll.offset > _scroll.position.maxScrollExtent * 0.8 &&
+        !_scroll.position.outOfRange) {
+          print('load more');
+      pokemonListNotifer.getPokemons();
     }
   }
 
