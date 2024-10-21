@@ -6,7 +6,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 class PokemonListItem extends ConsumerWidget {
   final String name;
 
-  const PokemonListItem({super.key, required this.name});
+  const PokemonListItem(
+      {super.key, required this.name});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,11 +21,11 @@ class PokemonListItem extends ConsumerWidget {
           height: 50,
           width: 50,
           child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      pokemonState.value?.sprite.frontDefault ?? ''),
-                  onBackgroundImageError: (exception, stackTrace) =>
-                      const CircularProgressIndicator(),
-                ),
+            backgroundImage:
+                NetworkImage(pokemonState.value?.sprite.frontDefault ?? ''),
+            onBackgroundImageError: (exception, stackTrace) =>
+                const CircularProgressIndicator(),
+          ),
         ),
         title: Text(pokemonState.value?.name.toUpperCase() ?? 'POKEMON'),
         subtitle: Text('Base XP: ${pokemonState.value?.baseExperience}'),
