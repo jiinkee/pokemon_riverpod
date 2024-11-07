@@ -1,13 +1,15 @@
 import 'package:get_it/get_it.dart';
 import 'package:pokemon_riverpod/core/app_database.dart';
+import 'package:pokemon_riverpod/core/app_shared_prefs.dart';
 import 'package:pokemon_riverpod/core/network/api.dart';
 
 GetIt locator = GetIt.instance;
 
-void setUpLocator() async {
+Future<void> setUpLocator() async {
   locator.registerLazySingleton(() => Api());
+  locator.registerLazySingleton(() => AppSharedPrefs());
   locator.registerSingletonAsync<AppDatabase>(() async {
-    return $FloorAppDatabase.databaseBuilder('app_database.db').build();
+    return await $FloorAppDatabase.databaseBuilder('app_database.db').build();
   });
 
   await locator.allReady();

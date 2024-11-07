@@ -9,7 +9,7 @@ import 'package:pokemon_riverpod/home_screen.dart';
 void main() {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    setUpLocator();
+    await setUpLocator();
     runApp(const ProviderScope(child: MyApp()));
   }, (error, stackTrace) async {
     debugPrintStack(stackTrace: stackTrace);

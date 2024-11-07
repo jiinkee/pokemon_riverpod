@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokemon_riverpod/core/extensions/async_value_ui.dart';
 import 'package:pokemon_riverpod/features/pokemon/data/pokemon_list_provider.dart';
-import 'package:pokemon_riverpod/features/pokemon/presentation/pokemon_list_item.dart';
-import 'package:pokemon_riverpod/features/pokemon/presentation/pokemon_list_item_skeleton.dart';
+import 'package:pokemon_riverpod/features/pokemon/presentation/listing/pokemon_list_item.dart';
+import 'package:pokemon_riverpod/features/pokemon/presentation/listing/pokemon_list_item_skeleton.dart';
 
 class PokemonListWidget extends ConsumerStatefulWidget {
   const PokemonListWidget({super.key});
